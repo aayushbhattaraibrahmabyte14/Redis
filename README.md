@@ -26,7 +26,7 @@ Now you can access portainer from http://localhost:9443
 
 Now you can access redis stack from browser
 To access the redis stack:
-1. View the first redis stack PORT on portainer
+1. View the last redis stack PORT on portainer
 2. Access redis stack from http://localhost:PORT
 
 To connect redis server
@@ -94,3 +94,23 @@ async function init() {
 init()
 
 -Whenever the user request data to the server, the server always asks for data to Redis and the Redis provides same data to the server so we have to Reset the Redis after some time for getting fresh data.
+
+# Lists
+Lists are basically likes an array. Lists are used to implement stacks and queues.Build queue management for background worker systems.
+
+## commands for lists:
+1. LPUSH -  it adds the new elements from the head.
+2. RPUSH -  it add the new elements from the tail
+3. LPOP  -  it remove and return an element from the head of a list
+4. RPOP -   it remove and return an element from the tail of a list
+5. LLEN  -  returns the length of the list
+6. LMOVE -  automatically moves the elements from one list to another
+7. LRANGE - extracts a range of elements from the list
+8. LTRIM -  reduces a list to the specified range of elements
+
+If you add from head and remove from tail it will be a queue and if you add from head and also remove value from head it will be a stack
+
+
+Blocking commands:
+BLPOP: It removes and returns the element from the head. If there is no elements in that lists it waits for the time that we give to the command and if it doesnot found it returns nill.
+

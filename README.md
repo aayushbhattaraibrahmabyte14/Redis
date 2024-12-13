@@ -46,13 +46,18 @@ Now you can interact with Redis server
 8. Streams etc. 
 
 Getting and Setting String
+A single Redis string can be maximum of 512MB
 1. SET - Store the string value
 2. SETNX - Store the string value if it is not already exist
 3. MSET - It sets multiple values in one operation.
 4. GET - Get the string value
 5. MGET - It gets multiple values in one operation
 
-   We can set count of the data by: SET count <number>
+We can set count of the data by: SET <key> <number>
+increment values by:
+     incr <key> 
+And we can increament value how much we want by:
+incrby <key> <increament-value>
 
 * We can set value to redis server by: set <entity>:<id> <value> (Make conventiaonal keys for good practice)
 And get value by: get <key>

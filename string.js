@@ -14,7 +14,7 @@ async function lists() {
   await client.lpush('messages', 3)
   await client.lpush('messages', 4)
   await client.lpush('messages', 5)
-  const result = await client.blpop("messages", 30)
+  await client.blpop("messages", 30)
 }
 
 lists()

@@ -35,7 +35,7 @@ To connect redis server
 Now you can interact with Redis server
 
 
-* Redis datatypes:
+# Redis datatypes:
 1. String
 2. Lists
 3. Sets
@@ -45,7 +45,9 @@ Now you can interact with Redis server
 7. Bitmaps
 8. Streams etc. 
 
-Getting and Setting String
+
+# 1. String
+## Getting and Setting String
 A single Redis string can be maximum of 512MB
 1. SET - Store the string value
 2. SETNX - Store the string value if it is not already exist
@@ -63,3 +65,32 @@ incrby <key> <increament-value>
 And get value by: get <key>
 Note: You can add, get, update and delete these values in redis-stack too. 
 
+For Node.js we can use ioredis. IoRedis is the full feature Redis client
+To install ioredis in your project:
+- npm install ioredis
+Setup client for Redis in node js:
+
+import {Redis} from 'ioredis'
+//This hit redis server in 6379 PORT by default
+const client = new Redis()
+export default client
+
+Use client to get values by Redis:
+
+import client from './client.js'
+async function init() {
+    await client.set("user:1","Hello 123")
+    const result = await client.get("age")
+    console.log(result, "Resss")
+}
+init()
+
+- To Set expiry date of the keys in Redis:
+
+import client from './client.js'
+async function init() {
+    await client.expire("age", 10) //The age key will be expired after 10 seconds
+}
+init()
+
+-Whenever the user request data to the server, the server always asks for data to Redis and the Redis provides same data to the server so we have to Reset the Redis after some time for getting fresh data.

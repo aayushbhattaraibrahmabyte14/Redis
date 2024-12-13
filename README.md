@@ -111,6 +111,33 @@ Lists are basically likes an array. Lists are used to implement stacks and queue
 If you add from head and remove from tail it will be a queue and if you add from head and also remove value from head it will be a stack
 
 
-Blocking commands:
-BLPOP: It removes and returns the element from the head. If there is no elements in that lists it waits for the time that we give to the command and if it doesnot found it returns nill.
+## Blocking commands:
+BLPOP -  removes and returns an element from the head of a list. If the list is empty, the command blocks until an element becomes available or until the specified timeout is reached.
+BLMOVE -  atomically moves elements from a source list to a target list. If the source list is empty, the command will block until a new element becomes available.
 
+### To get messages of the list :
+- lrange messages 0 -1 (from 0 to end )
+
+### To delete any keys
+- del messages
+
+### To get all keys that are from user entity
+- KEYS user:*
+
+  ## Sets
+  It is the unordered collection of unique string members. The max size limit of a Redis set is 2^32 -1  
+### To add members in Sets
+- sadd <SetName> <value>
+
+### To remove members in Sets
+- SREM <SetName> <value>
+
+### To check if the value exists
+-SISMEMBER <SETNAME> <value>
+
+### TO check the common elements between sets (intersection)
+-SINTER <SETNAME> <SETNAME>
+
+
+ 
+  

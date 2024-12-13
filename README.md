@@ -43,7 +43,8 @@ Now you can interact with Redis server
 5. Hashes
 6. Probabilistic
 7. Bitmaps
-8. Streams etc. 
+8. Streams
+9.  Redis Geospatial etc. 
 
 
 # 1. String
@@ -124,7 +125,7 @@ BLMOVE -  atomically moves elements from a source list to a target list. If the 
 ### To get all keys that are from user entity
 - KEYS user:*
 
-  ## Sets
+  # Sets
   It is the unordered collection of unique string members. The max size limit of a Redis set is 2^32 -1  
 ### To add members in Sets
 - sadd <SetName> <value>
@@ -138,6 +139,52 @@ BLMOVE -  atomically moves elements from a source list to a target list. If the 
 ### TO check the common elements between sets (intersection)
 -SINTER <SETNAME> <SETNAME>
 
+# Hashes
+Hashes are the record types structured as collections of field- value pairs.
+### To set multiple fields of hash:
+ - HSET <Field_Name> <Value>
+Most redis hash commands are O(1)
 
+ # Sorted sets
+ ### To add sorted adds
+ - ZADD <FIELD> <VAUE> <MEMBER_VALUE>
  
-  
+ ### To return data in range
+   - ZRANGE <FIELD> 0-1 <- (First to last)
+   - 
+ ### To return data in reverse range
+   - ZREVRANGE <FIELD> 0-1 <- (First to last)
+
+  ### TO GET Rank of the user
+   -ZRANK <FIELD><MEMBER_VALUE>
+
+# Redis Streams
+Redis streams is the data structure that provides an append only log for managing and storing real time event data. It is ideal for building systems that require message queues, event sourcing, or real time data feeds. It is introduced in Redis 5.0.
+
+### To add values in  Redis streams
+- XADD <stream-key> <ID> <field1> <value1> 
+
+### To read the values i Redis streams
+- XREAD STREAMS mystream 0
+
+### To get the data within the range
+- XRANGE <stream-key> <start> <end>
+
+### To get the length of the data
+- XLEN <stream-key>
+
+# Redis Geospatial
+It let use store coordinates and search for them. This data structure is useful for finding neaby points within a given raduis or bounding box.
+
+## Basic commands
+1. GEOADD - Add a location to a geospatital index(Longitude comes over latitude in this command.
+
+GEOADD <key> <longitude> <latitude> <member> 
+### Parameters
+#### <key>: The name of the geospatial index.
+#### <longitude>: The longitude of the location (floating-point number).
+#### <latitude>: The latitude of the location (floating-point number).
+#### <member>: The name of the location (a unique identifier).
+
+2. GEOSEARCH -  returns location with the given radius or a boundaring box.
+GEOSEARCH <key> <longitude> <latitude> <field> <value>

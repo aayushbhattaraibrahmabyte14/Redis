@@ -2,7 +2,7 @@
 
 PHP is widely used, open source server side scripting languages for making dynamic and interactive webpages. PHP stands for HyperText Preprocessor.
 PHP scripts executes in server. PHP files contains HTML, CSS, JavaScript, and PHP code. PHP file extension is .php.
-PHP scripts start with <?php and ends with ?>
+PHP scripts start with "<?php" and ends with "?>"
 
 
 ## Comments

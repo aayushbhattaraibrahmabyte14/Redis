@@ -1,6 +1,6 @@
 import express from "express"
 import axios from "axios"
-import client from "./client"
+import client from "./client.js"
 const app = express()
 app.get('/', async(req, res)=> {
     try {
@@ -18,6 +18,12 @@ app.get('/', async(req, res)=> {
     } catch (error) {
         console.log(error, "sjdfhsdbfd")
     }
+})
+
+app.post("/add", (req, res)=>{
+    const {full_name, email} = req.body
+    client.lpush("submission", JSON.stringify({full_name, email}))
+    res.json({message:"Added"})
 })
 app.listen(3000, () => {
     console.log("heuhsfhisaf")

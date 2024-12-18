@@ -188,3 +188,10 @@ GEOADD <key> <longitude> <latitude> <member>
 
 2. GEOSEARCH -  returns location with the given radius or a boundaring box.
 GEOSEARCH <key> <longitude> <latitude> <field> <value>
+
+
+
+
+
+# From HKirat Redis class
+
